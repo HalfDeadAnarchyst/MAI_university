@@ -1,0 +1,66 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <time.h>
+
+double modd(double first, double second){
+    while ((first-second)>0){
+        first=first-second;
+    }
+    return first;
+}
+
+int main()
+{
+
+    srand(time(NULL)+time(NULL));
+    int i, line, temp, ext1, ext2;
+    double results[19];
+    double data[8][38] = {37.0,48.0,117.0,166.0,4.5,5.3,80.0,95.0,11.6,14.8,24.0,33.0,30.0,38.0,180.0,420.0,4.5,11.0 ,47.0,72.0,19.0,37.0,3.0,11.0,1.0,5.0,0.0,1.0,1.0,3.0,1.0,4.8,0.0,1.5,0.6,1.0,0.0,15.0,
+                          42.0,50.0,132.0,173.0,4.0,5.0,80.0,95.0,11.6,14.8,24.0,33.0,30.0,38.0,200.0,400.0,4.2,9.0,50.0,70.0,20.0,40.0,3.0,11.0,1.0,5.0,0.0,1.0,1.0,3.0,1.0,4.8,0.0,1.5,0.5,1.0,0.0,15.0,
+                          39.0,50.0,131.0,172.0,4.0,5.0,80.0,95.0,11.6,14.8,24.0,33.0,30.0,38.0,200.0,400.0,4.2,9.0,50.0,70.0,20.0,40.0,3.0,11.0,1.0,5.0,0.0,1.0,1.0,3.0,1.0,4.8,0.0,1.5,0.5,1.0,0.0,20.0,
+                          37.0,51.0,126.0,174.0,4.0,5.0,80.0,95.0,11.6,14.8,24.0,33.0,30.0,38.0,200.0,400.0,4.2,9.0,50.0,70.0,20.0,40.0,3.0,11.0,1.0,5.0,0.0,1.0,1.0,3.0,1.0,4.8,0.0,1.5,0.5,1.0,0.0,20.0,
+                          34.0,44.0,117.0,153.0,4.1,5.1,80.0,95.0,11.6,14.8,24.0,33.0,30.0,38.0,180.0,420.0,4.5,11.0,47.0,72.0,19.0,37.0,3.0,11.0,1.0,5.0,0.0,1.0,1.0,3.0,1.0,4.8,0.0,1.5,0.6,1.0,0.0,20.0,
+                          38.0,47.0,117.0,155.0,3.5,4.7,80.0,95.0,11.6,14.8,24.0,33.0,30.0,38.0,200.0,400.0,3.98,10.4,50.0,70.0,20.0,40.0,3.0,11.0,1.0,5.0,0.0,1.0,1.0,3.0,1.0,4.8,0.0,1.5,0.5,1.0,0.0,20.0,
+                          35.0,47.0,117.0,160.0,3.5,4.7,80.0,95.0,11.6,14.8,24.0,33.0,30.0,38.0,200.0,400.0,3.98,10.4,50.0,70.0,20.0,40.0,3.0,11.0,1.0,5.0,0.0,1.0,1.0,3.0,1.0,4.8,0.0,1.5,0.5,1.0,0.0,30.0,
+                          35.0,47.0,120.0,161.0,3.5,4.7,80.0,95.0,11.6,14.8,24.0,33.0,30.0,38.0,200.0,400.0,3.98,10.4,50.0,70.0,20.0,40.0,3.0,11.0,1.0,5.0,0.0,1.0,1.0,3.0,1.0,4.8,0.0,1.5,0.5,1.0,0.0,30.0};
+
+    /*printf("%f\n", data[5][0]);
+    printf("%f\n", data[5][1]);
+    printf("%f\n", data[5][2]);
+    printf("%f\n", data[5][3]);*/
+    line=4;
+    for(i=0;i<20;i++){
+        ext1=data[line][i*2+1]*100;
+        ext2=data[line][i*2]*100;
+        temp=(rand()%(ext1-ext2))+ext2;
+        //printf("%d %d %d\n",ext1 ,ext2, temp);
+        results[i]=temp;
+        results[i]=results[i]/100;
+    }
+    /*for(i=0;i<20;i++){
+        printf("%f\n", results[i]);
+    }*/
+
+    printf("Hematocrit        - %.1f%%      [%.1f-%.1f]\n", results[0], data[line][0], data[line][1]);
+    printf("Hemoglobin        - %.1f g/dl [%.1f-%.1f]\n", results[1], data[line][2], data[line][3]);
+    printf("Red Blood Cells   - %.1f mln/mkg[%.1f-%.1f]\n", results[2], data[line][4], data[line][5]);
+    printf("MCV               - %.1f fl. [%.1f-%.1f]\n", results[3], data[line][6], data[line][7]);
+    printf("RDW               - %.1f [%.1f-%.1f]\n", results[4], data[line][8], data[line][9]);
+    printf("MCH               - %.1f [%.1f-%.1f]\n", results[5], data[line][10], data[line][11]);
+    printf("MCHC              - %.1f [%.1f-%.1f]\n", results[6], data[line][12], data[line][13]);
+    printf("Platelets         - %.1f [%.1f-%.1f]\n", results[7], data[line][14], data[line][15]);
+    printf("White Blood Cells - %.1f [%.1f-%.1f]\n", results[8], data[line][16], data[line][17]);
+    printf("Neutrophils       - %.1f [%.1f-%.1f]\n", results[9], data[line][18], data[line][19]);
+    printf("Lymphocytes       - %.1f [%.1f-%.1f]\n", results[10], data[line][20], data[line][21]);
+    printf("Monocytes         - %.1f [%.1f-%.1f]\n", results[11], data[line][22], data[line][23]);
+    printf("Eosinophils       - %.1f [%.1f-%.1f]\n", results[12], data[line][24], data[line][25]);
+    printf("Basophiles        - %.1f [%.1f-%.1f]\n", results[13], data[line][26], data[line][27]);
+    printf("Neutrophils abs.  - %.1f [%.1f-%.1f]\n", results[14], data[line][28], data[line][29]);
+    printf("Lymphocytes abs.  - %.1f [%.1f-%.1f]\n", results[15], data[line][30], data[line][31]);
+    printf("Eosinophils abs.  - %.1f [%.1f-%.1f]\n", results[16], data[line][32], data[line][33]);
+    printf("Basophils abs.    - %.1f [%.1f-%.1f]\n", results[17], data[line][34], data[line][35]);
+    printf("SOE (By Westgern) - %.1f [%.1f-%.1f]\n", results[18], data[line][36], data[line][37]);
+
+    return 0;
+}

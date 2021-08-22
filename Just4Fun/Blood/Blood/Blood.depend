@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1491333910 source:f:\blood\blood\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
